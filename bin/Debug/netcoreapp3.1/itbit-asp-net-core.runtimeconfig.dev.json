@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/home/werley/.dotnet/store/|arch|/|tfm|",
-      "/home/werley/.nuget/packages"
+      "C:\\Users\\Werley\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Werley\\.nuget\\packages"
     ]
   }
 }

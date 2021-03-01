@@ -10,7 +10,7 @@ using itbit_asp_net_core.model;
 namespace itbit_asp_net_core.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20210227144304_InitialCreate")]
+    [Migration("20210301173739_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,9 +30,8 @@ namespace itbit_asp_net_core.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
-                    b.Property<string>("DataNascimento")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()

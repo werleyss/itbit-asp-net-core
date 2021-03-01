@@ -9,11 +9,11 @@ namespace itbit_asp_net_core.Model
         public Guid Id { get; set;}
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [StringLength(100, ErrorMessage = "O campo {0} precisa ter no minimo {1} caracters", MinimumLength = 3)]
+        [StringLength(100, ErrorMessage = "O campo {0} precisa ter no minimo {2} caracters", MinimumLength = 3)]
         public string Nome {get; set;}
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public string DataNascimento {get; set;}
+        public DateTime DataNascimento {get; set;}
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Sexo {get; set;}

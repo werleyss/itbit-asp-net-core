@@ -26,11 +26,11 @@ namespace itbit_asp_net_core.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Ativo")
+                        .HasDefaultValue(true)
                         .HasColumnType("bit");
 
-                    b.Property<string>("DataNascimento")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()

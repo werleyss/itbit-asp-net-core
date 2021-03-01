@@ -13,13 +13,16 @@ namespace itbit_asp_net_core.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Nome = table.Column<string>(maxLength: 100, nullable: false),
-                    DataNascimento = table.Column<string>(nullable: false),
+                    DataNascimento = table.Column<DateTime>(nullable: false),
                     Sexo = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
                     Senha = table.Column<string>(nullable: true),
                     Ativo = table.Column<bool>(nullable: false)
                 },
-                constraints: table => table.PrimaryKey("PK_Usuarios", x => x.Id));
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
