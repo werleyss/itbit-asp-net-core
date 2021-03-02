@@ -44,6 +44,7 @@ namespace itbit_asp_net_core
             app.UseCors(x => x
                 .AllowAnyMethod()
                 .AllowAnyHeader()
+                .WithOrigins("http://localhost:4200/")
                 .SetIsOriginAllowed(origin => true)
                 .AllowCredentials());
 

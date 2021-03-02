@@ -24,15 +24,10 @@ namespace itbit_asp_net_core.Controllers
         // GET: api/usuario
         [HttpGet]
         [Route("")]
-        public async Task<ActionResult<List<UsuarioModel>>> Get(string nome, boolen ativo)
+        public async Task<ActionResult<List<UsuarioModel>>> Get(string nome, bool ativo)
         {
-            string query = "SELECT  nome, idade, email, sexo, ativo"
-                                + "FROM usuarios"
-                                + "WHERE ativo = {1} "
-                                + "AND nome LIKE '%{0}%' " 
-            return await _context.Usuarios
-            .FromSql(query)
-            .ToListAsync();
+            
+            return await _context.Usuarios.FromSqlRaw("SELECT id, nome, DataNascimento, CAST(DATEDIFF(DD, DataNascimento, GETDATE())/365.25 AS INT) as idade, email, senha, sexo, ativo FROM usuarios WHERE ativo = {0} AND nome like '%{1}%' ", ativo, nome).ToListAsync();
         }
 
         // GET: api/usuario/5
