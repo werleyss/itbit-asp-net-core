@@ -24,14 +24,34 @@ namespace itbit_asp_net_core.Controllers
         // GET: api/usuario
         [HttpGet]
         [Route("")]
-        public async Task<ActionResult<List<UsuarioModel>>> Get()
+        public async Task<ActionResult<List<UsuarioModel>>> Get(string nome, boolen ativo)
         {
-            return await _context.Usuarios.ToListAsync();
+            string query = "SELECT  nome, idade, email, sexo, ativo"
+                                + "FROM usuarios"
+                                + "WHERE ativo = {1} "
+                                + "AND nome LIKE '%{0}%' " 
+            return await _context.Usuarios
+            .FromSql(query)
+            .ToListAsync();
+        }
+
+        // GET: api/usuario/5
+        [HttpGet()]
+        [Route("{id}")]
+        public async Task<ActionResult<UsuarioModel>> Get(Guid id)
+        {
+            var usuario = await _context.Usuarios.FindAsync(id);
+ 
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+ 
+            return usuario;
         }
 
         // POST: api/usuario
         [HttpPost]
-        [Route("")]
         public async Task<ActionResult<UsuarioModel>> PostUsuario(UsuarioModel usuario)
         {
             _context.Usuarios.Add(usuario);

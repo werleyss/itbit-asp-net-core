@@ -13,6 +13,7 @@ namespace itbit_asp_net_core.Model
         public string Nome {get; set;}
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataNascimento {get; set;}
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
